@@ -1,0 +1,20 @@
+React
+- library from facebook team
+- think in component (smallest thing)
+- render funtion return only one element(include inner element) and fully close
+- properties -> passing value into another element
+States 
+- data in its component(like a props but avaiable only component)
+- method of calling is the same of propertiy
+React Lifecycle
+- componentWillMount
+- componentDidMount
+- shoukdComponentUpdate
+- componentWillUnmount
+- render (!!!)
+
+How to start
+- create package.json (manage dependency)
+- create webpack.config.json (pack into one file)
+- create .babelrc (convert es6 to es5)
+ 
