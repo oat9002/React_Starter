@@ -47,7 +47,7 @@ class App extends React.Component {
         <br/>
         <Btn onClick={this.handleClick} >Send</Btn>
         <br />
-        {this.state.click ? <txtLabel txt={this.state.txt} /> : <txtLabel txt={Please insert some texts.} />
+        {this.state.click ? <txtLabel txt={this.state.txt} /> : <txtLabel txt={Please insert some texts.} />}
       </div>
     );
   }
