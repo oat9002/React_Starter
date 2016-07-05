@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "webpack": "webpack",
+    "webpack": "webpack",
     "start": "webpack-dev-server"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0"
+  }
 }

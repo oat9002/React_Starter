@@ -121,3 +121,5 @@ class CompLife extends React.Component {
     );
   }
 }
+
+export default App
