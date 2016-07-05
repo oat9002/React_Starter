@@ -24,7 +24,7 @@ class App extends React.Component {
 
   handleClick() {
     this.setState({
-      click: true
+      click: !this.state.click
     });
   }
 
@@ -46,8 +46,9 @@ class App extends React.Component {
         <InputBox ref="txt" update={this.update} />
         <br/>
         <Btn onClick={this.handleClick} >Send</Btn>
+        <button onClick={this.handleClick}>test</button>
         <br />
-        {this.state.click ? <txtLabel txt={this.state.txt} /> : <txtLabel txt={Please insert some texts.} />}
+        {this.state.click ? <h1>true</h1> : <h1>false</h1>}
       </div>
     );
   }
@@ -89,8 +90,34 @@ class InputBox extends React.Component {
 // }
 
 // const App = () => <h1>Hello Oat</h1>
-ReactDOM.render(
-  <App />, document.getElementById('app')
-);
+class CompLife extends React.Component {
+  constructor() {
+    super();
+    this.update = this.update.bind(this);
+    this.state = {
+      increasing: false,
+      count: 0
+    }
+  }
 
-// export default App
+  componentWillReceiveProps(nextProps) {
+    console.log("nextProps: " + nextProps.count.val);
+    console.log("current: " + this.props.val);
+    console.log("count: " + this.props.count);
+    this.setState({
+      increasing: nextProps.val > this.props.val
+    })
+  }
+
+  update() {
+    ReactDOM.render(
+      <CompLife val={this.props.val + 1} count={this.props.count + 2}/>, document.getElementById('app')
+    );
+  }
+  render() {
+    console.log(this.state.increasing);
+    return (
+      <button onMouseMove={this.update}>{this.props.val}</button>
+    );
+  }
+}
