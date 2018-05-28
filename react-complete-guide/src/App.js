@@ -9,7 +9,7 @@ class App extends Component {
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 27 },
     ],
-
+    showPersons: false
   }
 
   switchNameHandler = (name) => {
@@ -32,12 +32,26 @@ class App extends Component {
     });
   }
 
+  togglePersonHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
+    });
+  }
+
   render() {
-    return (
-      <div className='App'>
-        <h1>Hi, I'm and React app 555</h1>
-        <p>I'm working</p>
-        <button onClick={ () => this.switchNameHandler('oat') }>swtichName</button>
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
         <Person 
           name={ this.state.persons[0].name } 
           age={ this.state.persons[0].age }/>
@@ -50,6 +64,16 @@ class App extends Component {
         <Person 
           name={ this.state.persons[2].name } 
           age={ this.state.persons[2].age }/>
+      </div> 
+      );
+    }
+
+    return (
+      <div className='App'>
+        <h1>Hi, I'm and React app 555</h1>
+        <p>I'm working</p>
+        <button style={ style } onClick={ this.togglePersonHandler }>swtichName</button>
+        { persons }
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
