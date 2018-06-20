@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -48,7 +47,6 @@ class App extends Component {
   render() {
 
     let persons = null;
-    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -58,30 +56,19 @@ class App extends Component {
               clicked={ this.deletePersonHandler }
               changed={ this.nameChangedHandler }
             />
-      </div> 
+        </div> 
       );
-
-      btnClass = classes.Red;
-    }
-
-    const AssignedClasses = [];
-    if(this.state.persons.length <= 2) {
-      AssignedClasses.push('red');
-    }
-    
-    if(this.state.persons.length <= 1) {
-      AssignedClasses.push('bold');
     }
 
     return (
-
       <div className={ classes.App }>
-        <h1>Hi, I'm and React app 555</h1>
-        <p className={ AssignedClasses.join(' ') } >I'm working</p>
-        <button className={ btnClass } onClick={ this.togglePersonHandler }>Toggle Person</button>
+        <Cockpit
+           showPersons={ this.state.showPersons }
+           persons={ this.state.persons }
+           clicked={ this.togglePersonHandler }
+        />
         { persons }
       </div>
-
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi'))
   }
