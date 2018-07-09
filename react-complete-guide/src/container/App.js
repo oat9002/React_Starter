@@ -37,11 +37,22 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-      console.log('[UPDATE App.js] Inside componentWillUpdate');
+      console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
   }
 
   componentDidUpdate() {
       console.log('[UPDATE App.js] Inside componentDidUpdate');
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('[UPDATE App.js] Inside getDerivedStateFromProps', nextProps, prevState);
+
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('[UPDATE App.js] Inside getSnapshotBeforeUpdate');
+
   }
 
   nameChangedHandler = (event, id) => {
