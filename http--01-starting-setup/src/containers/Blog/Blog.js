@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from '../../axios';
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
@@ -8,7 +8,8 @@ import './Blog.css';
 class Blog extends Component {
     state = {
         posts: [],
-        selectedPostId: 0
+        selectedPostId: 0,
+        error: false
     }
 
     componentDidMount() {
@@ -26,6 +27,11 @@ class Blog extends Component {
                 });
 
                 // console.log(response);
+            })
+            .catch(error => {
+                this.setState({
+                    error: true
+                })
             });
     }
 
@@ -36,9 +42,15 @@ class Blog extends Component {
     }
 
     render () {
-        const posts = this.state.posts.map(post => {
-            return <Post key={ post.id } title={ post.title } author={ post.author } clicked={ () => this.postSelectedHandler(post.id) } />;
-        });
+        const posts = !this.state.error ? 
+                this.state.posts.map(post => {
+                    return <Post 
+                            key={ post.id } 
+                            title={ post.title } 
+                            uthor={ post.author } 
+                            clicked={ () => this.postSelectedHandler(post.id) } /> 
+                }) : 
+                <p style={{ textAlign: 'center' }}>Something went wrong</p>
 
         return (
             <div>
