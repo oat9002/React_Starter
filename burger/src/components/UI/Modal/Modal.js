@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Aux/Aux';
 import classes from './Modal.css';
 import Backdrop from '../Backdrop/Backdrop';
 
@@ -24,7 +24,7 @@ class Modal extends Component {
                     }}>
                     { this.props.children }
                 </div>
-        </Aux>
+            </Aux>
         );
     }
 }
