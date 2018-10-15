@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://react-my-burger-daf10.firebaseio.com';
 
 class App extends Component {
   render() {
